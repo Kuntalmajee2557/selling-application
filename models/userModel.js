@@ -1,4 +1,5 @@
-const { default: mongoose, model } = require("mongoose");
+import mongoose from 'mongoose';
+
 
 //define the course schema
 const userSchema = new mongoose.Schema({
@@ -19,4 +20,4 @@ const userSchema = new mongoose.Schema({
 
 //compile models from the shema
 const User = mongoose.model("User", userSchema);
-module.exports = User;
+export default User;

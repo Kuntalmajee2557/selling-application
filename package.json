@@ -1,7 +1,19 @@
 {
+  "name": "selling-application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
   "dependencies": {
+    "body-parse": "^0.1.0",
     "express": "^4.19.2",
     "mongoose": "^8.4.4",
     "path": "^0.12.7"
-  }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
 }

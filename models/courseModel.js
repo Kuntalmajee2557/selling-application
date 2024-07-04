@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+import mongoose from 'mongoose';
+
 
 
 //define the course schema
@@ -31,4 +32,4 @@ const courseSchema = new mongoose.Schema({
 //compile models from the shema
 const Course = mongoose.model("Course", courseSchema);
 
-module.exports = Course;
+export default Course;

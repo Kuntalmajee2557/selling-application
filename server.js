@@ -1,22 +1,23 @@
 //express setup
-const express = require("express");
+import express from "express";
 const app = express();
+
+
+import bodyParser from 'body-parser'; 
+app.use(bodyParser.json()); // req.body
 
 const port = 8080;
 
-const userRoute = require("./routes/userRoute.js");
-const sellerRoute = require("./routes/sellerRoute.js");
+import userRoute from "./routes/userRoute.js"
+import sellerRoute from "./routes/sellerRoute.js";
 
 //define path
-const path = require("path");
+import path from "path";
 
 //to connect database
-const mongoose = require("mongoose");
-const connectToDatabase = require('./db');
+import mongoose from 'mongoose';
+import connectToDatabase from './db.js';
 
-app.use(express.json());
-const bodyParser = require('body-parser'); 
-app.use(bodyParser.json()); // req.body
 
 app.use('/user', userRoute);
 app.use('/seller', sellerRoute);

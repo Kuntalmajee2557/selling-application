@@ -1,5 +1,4 @@
-const express = require('express');
-const { route } = require('./userRoute');
+import express from 'express';
 const router = express.Router();
 
 router.get('/signup', (req, res) => {
@@ -10,4 +9,4 @@ router.get('/:id/profile', (req, res) => {
     res.send('seller profile');
 })
 
-module.exports = router;
+export default router;

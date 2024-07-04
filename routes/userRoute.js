@@ -1,10 +1,13 @@
 // routes/users.js
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
 //database connection
-const mongoose = require("mongoose");
-const connectToDatabase = require('./../db');
+import mongoose from "mongoose";
+import connectToDatabase from './../db.js';
+
+import User from'./../models/userModel.js';
+
 
 router.get('/signup', (req, res) => {
     res.send('user signup');
@@ -20,10 +23,7 @@ router.get('/login', (req, res) => {
     res.send('user login');
 })
 
-router.post('/login', (req, res) => {
-    const {newUser} = req.body;
-    console.log(newUser);
-})
+
 
 
 
@@ -32,4 +32,4 @@ router.get('/:id/profile', (req, res) => {
 })
 
 
-module.exports = router;
+export default router;
