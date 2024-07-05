@@ -8,6 +8,7 @@ import connectToDatabase from './../db.js';
 
 import User from './../models/userModel.js';
 
+import {jwtAuthMiddleware, generateToken} from "./../jwt.js"
 
 router.get('/signup', (req, res) => {
     res.send('user signup');
@@ -28,8 +29,13 @@ router.post('/signup', async (req, res) => {
         const newUser = new User(data);
         const user = await newUser.save().then(user => console.log(user));
 
+        const payload = {
+            id: newUser.id
+        }
 
-        res.status(200).json({ massage: "user created", newUser });
+        const token = generateToken(payload);
+
+        res.status(200).json({ massage: "user created", newUser, token: token });
     }
     catch (err) {
         console.log(err);
@@ -57,7 +63,13 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ error: "wrong password" });
         }
 
-        res.status(400).json(existUser);
+        const payload = {
+            id: existUser.id
+        }
+
+        const token = generateToken(payload);
+
+        res.status(200).json({existUser, token:token});
 
     }
     catch (err) {
@@ -66,7 +78,6 @@ router.post('/login', async (req, res) => {
     }
     
 })
-
 
 
 

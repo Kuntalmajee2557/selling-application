@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
 
-
-
 //define the course schema
 const sellerSchema = new mongoose.Schema({
     username: {

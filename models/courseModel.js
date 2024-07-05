@@ -15,6 +15,7 @@ const courseSchema = new mongoose.Schema({
     },
     image: {
         type: String,
+        default : 'demo.jpg'
     },
     prize: {
         type: Number,
