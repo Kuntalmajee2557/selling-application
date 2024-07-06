@@ -9,6 +9,7 @@ import connectToDatabase from './../db.js';
 import User from './../models/userModel.js';
 
 import {jwtAuthMiddleware, generateToken} from "./../jwt.js"
+import Course from '../models/courseModel.js';
 
 router.get('/signup', (req, res) => {
     res.send('user signup');
@@ -77,6 +78,24 @@ router.post('/login', async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
     
+})
+
+router.put("/getcourse/:id", jwtAuthMiddleware, async (req, res) => {
+    try{
+        const courseId = req.params.id;
+        const userId = req.user.id;
+
+        const user = await User.find({id : userId});
+        user.courses.push(courseId);
+        user.save();
+
+        res.status(200).json({massage : "course parchased", user});
+
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({ error: "Internal server error" });
+    }
 })
 
 
