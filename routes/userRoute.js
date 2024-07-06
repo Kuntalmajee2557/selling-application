@@ -85,7 +85,12 @@ router.put("/getcourse/:id", jwtAuthMiddleware, async (req, res) => {
         const courseId = req.params.id;
         const userId = req.user.id;
 
-        const user = await User.find({id : userId});
+        const user = await User.findOne({ _id : userId});
+
+        if(user.courses.includes(courseId)){
+            return res.status(400).json({massage : "course already parchased"});
+        }
+
         user.courses.push(courseId);
         user.save();
 
