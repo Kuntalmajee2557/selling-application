@@ -6,6 +6,9 @@ const app = express();
 import bodyParser from 'body-parser'; 
 app.use(bodyParser.json()); // req.body
 
+import methodOverride from 'method-override';
+app.use(methodOverride('_method'));
+
 const port = 8080;
 
 import userRoute from "./routes/userRoute.js"
